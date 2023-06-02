@@ -1,0 +1,150 @@
+:root {
+	--nominal-1px: 0.0625rem;
+	--background-color: #222222;
+	--foreground-color: #DDDDDD;
+	--highlight-color: #444444;
+}
+
+/** 
+ * Nominal width: 800px
+ * Nominal height: 600px
+ * In this particular case the layout does not actually change when the aspect ratio changes but we still need to make sure it scales with the resolution.
+ * Unfortunately media queries do not yet work with global variables. **/
+@media (max-width: 800px) or (max-height: 600px) { /* Minimum resolution requirements not met. This will introduce scroll bars but will preserve the core UI functionality. */
+	html {
+		font-size: 16px;
+	}
+}
+@media (max-aspect-ratio: 4/3) and (min-width: 800px) and (min-height: 600px) { /* Scale with the viewport width. */
+	html {
+		font-size: 2vw; /* Essentially 16px - the font size - divided by 800px - the nominal width of the layout expressed as percentage. */
+	}
+}
+@media (min-aspect-ratio: 4/3) and (min-width: 800px) and (min-height: 600px) { /* Scale with the viewport height. */
+	html {
+		font-size: 2.667vh; /* Essentially 16px - the font size - divided by 600px - the nominal height of the layout expressed as percentage. */
+	}
+}
+
+body {
+	margin: 0px; /* Browsers really love to add various values here. */
+	color: var(--foreground-color);
+	font-size: 1rem;
+	background: var(--background-color);
+}
+
+#divSearchFilters {
+	display: flex;
+	margin: 0px auto;
+	box-sizing: border-box;
+	width: calc(50rem - (100vw - 100%)); /* Essentially 800px - the nominal width of the layout - divided by 16px - the font size. Adds a bit of a hacky fix to get around vw and vh's poor specification ignoring scroll bars. */
+	padding: calc(10 * var(--nominal-1px));
+	background: var(--highlight-color);
+}
+
+#divSearchFiltersSearchInput {
+	flex-grow: 1;
+}
+
+#txtSearch {
+	box-sizing: border-box;
+	width: 100%;
+	height: 1.5rem;
+	padding: 0.25rem;
+	font-size: 1rem;
+	color: var(--foreground-color);
+	border: var(--nominal-1px) solid var(--foreground-color);
+	border-radius: calc(5 * var(--nominal-1px));
+	background: var(--highlight-color);
+}
+#txtSearch:hover {
+	background: var(--background-color);
+}
+#txtSearch:focus {
+	outline: none;
+	background: var(--background-color);
+}
+
+#divSearchFiltersSubmitButton {
+	flex-grow: 0;
+}
+
+button.bttnStyle1 {
+	box-sizing: border-box;
+	height: 1.5rem;
+	padding: 0.25rem;
+	font-size: 1rem;
+	line-height: 1rem;
+	color: var(--foreground-color);
+	border: var(--nominal-1px) solid var(--foreground-color);
+	border-radius: calc(5 * var(--nominal-1px));
+	background: var(--highlight-color);
+}
+button.bttnStyle1:hover {
+	background: var(--background-color);
+	cursor: pointer;
+}
+button.bttnStyle1:focus {
+	outline: none;
+	background: var(--background-color);
+}
+button.bttnDisabled {
+	opacity: .25;
+	pointer-events:none;
+}
+
+#divSearchResults {
+	margin: 0px auto;
+	box-sizing: border-box;
+	width: calc(50rem - (100vw - 100%)); /* Essentially 800px - the nominal width of the layout - divided by 16px - the font size. Adds a bit of a hacky fix to get around vw and vh's poor specification ignoring scroll bars. */
+	padding: calc(10 * var(--nominal-1px));
+}
+
+#divSearchResultsHeader {
+	display: flex;
+}
+#divSearchResultsHeaderStats {
+	flex-grow: 1;
+}
+#divSearchResultsHeaderPageNavigation {
+	flex-grow: 0;
+}
+#divSearchResultsHeaderPreviousNextNavigation {
+	flex-grow: 0;
+}
+
+#divSearchResultsEntries {
+}
+
+div.divSearchResultsEntry {
+	display:flex;
+	margin-top: calc(10 * var(--nominal-1px));
+	padding: calc(10 * var(--nominal-1px));
+	border: var(--nominal-1px) solid var(--foreground-color);
+	border-radius: calc(5 * var(--nominal-1px));
+}
+
+div.divSearchResultsEntryAvatar {
+	flex-grow: 0;
+	padding-right: calc(10 * var(--nominal-1px));
+}
+img.imgSearchResultAvatar {
+	width: 3rem;
+	height: 3rem;
+	border-radius: 50%;
+}
+
+div.divSearchResultsEntryDetails {
+	flex-grow: 1;
+}
+a.aSearchResultsEntryName {
+	font-size: 1.3rem;
+	color: var(--foreground-color);
+	text-decoration: none;
+}
+a.aSearchResultsEntryName:hover {
+	text-decoration: underline;
+}
+span.spanSearchResultsEntryLogin {
+	color: var(--highlight-color);
+}

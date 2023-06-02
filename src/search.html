@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		
+		<title>Vermeer GitHub User Search Demo</title>
+		<meta name="description" content="Vermeer GitHub User Search Demo.">
+		<meta name="author" content="Stefan Liber">
+
+		<meta property="og:title" content="Vermeer GitHub User Search Demo">
+		<meta property="og:type" content="website">
+		<meta property="og:url" content="https://stefan.liber.family/demos/vermeer/search.html">
+		<meta property="og:description" content="Vermeer GitHub User Search Demo.">
+		<!--<meta property="og:image" content="OG_Favicon.png">-->
+
+		<!--<link rel="icon" href="/favicon.ico">-->
+		<!--<link rel="icon" href="/favicon.svg" type="image/svg+xml">-->
+		<!--<link rel="apple-touch-icon" href="/apple-touch-icon.png">-->
+
+		<link rel="stylesheet" href="search.css">
+		<script src="search.js"></script>
+	</head>
+	<body onload="initializePage()">
+		<div id="divSearchFilters">
+			<div id="divSearchFiltersSearchInput">
+				<input type="text" id="txtSearch" />
+			</div>
+			<div id="divSearchFiltersSubmitButton">
+				&nbsp;<button type="button" id="bttnSubmit" class="bttnStyle1">Submit</button>
+			</div>
+		</div>
+		<div id="divSearchResults">
+			<div id="divSearchResultsHeader">
+				<div id="divSearchResultsHeaderStats">Search results will appear below.</div>
+				<div id="divSearchResultsHeaderPageNavigation"></div>
+				<div id="divSearchResultsHeaderPreviousNextNavigation">
+					&nbsp;<button type="button" id="bttnPreviousPage" class="bttnStyle1 bttnDisabled">Previous</button>
+					<button type="button" id="bttnNextPage" class="bttnStyle1 bttnDisabled">Next</button>	
+				</div>
+			</div>
+			<div id="divSearchResultsEntries">
+
+			</div>
+		</div>
+	</body>
+</html>

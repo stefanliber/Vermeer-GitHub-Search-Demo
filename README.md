@@ -1,1 +1,0 @@
-# Vermeer GitHub Search Demo
